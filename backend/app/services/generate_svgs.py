@@ -1,0 +1,298 @@
+from pathlib import Path
+
+RECEIPTS_DIR = Path(__file__).resolve().parent.parent.parent / "sample_data" / "receipts"
+RECEIPTS_DIR.mkdir(parents=True, exist_ok=True)
+
+kirana_hindi_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 780" width="100%" height="100%">
+  <defs>
+    <filter id="paper-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Receipt Paper -->
+  <rect x="25" y="20" width="400" height="740" rx="4" fill="#faf8f5" stroke="#e2ded4" stroke-width="2" filter="url(#paper-shadow)" />
+  
+  <!-- Header Pattern -->
+  <path d="M 25 20 Q 35 15 45 20 T 65 20 T 85 20 T 105 20 T 125 20 T 145 20 T 165 20 T 185 20 T 205 20 T 225 20 T 245 20 T 265 20 T 285 20 T 305 20 T 325 20 T 345 20 T 365 20 T 385 20 T 405 20 T 425 20" fill="none" stroke="#d5cfc2" stroke-width="2" />
+  
+  <!-- Store Title -->
+  <g text-anchor="middle" font-family="'Courier New', Courier, monospace">
+    <text x="225" y="65" font-size="20" font-weight="bold" fill="#1e293b">॥ श्री गणेशाय नमः ॥</text>
+    <text x="225" y="95" font-size="22" font-weight="900" fill="#0f172a">श्री गणेश किराना स्टोर</text>
+    <text x="225" y="118" font-size="14" font-weight="bold" fill="#334155">SHREE GANESH KIRANA STORE</text>
+    <text x="225" y="138" font-size="12" fill="#64748b">दशाश्वमेध घाट रोड, वाराणसी - 221001</text>
+    <text x="225" y="155" font-size="11" fill="#64748b">GSTIN: 09AABCG1234F1Z8 | मो: 98765-43210</text>
+  </g>
+  
+  <!-- Divider -->
+  <line x1="45" y1="172" x2="405" y2="172" stroke="#94a3b8" stroke-dasharray="4 3" stroke-width="1.5" />
+  
+  <!-- Invoice Meta -->
+  <g font-family="'Courier New', Courier, monospace" font-size="12" fill="#334155">
+    <text x="50" y="195">बिल क्र / Bill No: #SG-2024-8841</text>
+    <text x="50" y="215">दिनांक / Date: 2024-10-14  18:42</text>
+    <text x="50" y="235">ग्राहक / Customer: Cash Counter</text>
+  </g>
+  
+  <line x1="45" y1="250" x2="405" y2="250" stroke="#334155" stroke-width="1.5" />
+  
+  <!-- Table Header -->
+  <g font-family="'Courier New', Courier, monospace" font-size="12" font-weight="bold" fill="#0f172a">
+    <text x="50" y="268">विवरण / ITEM</text>
+    <text x="290" y="268" text-anchor="end">मात्रा</text>
+    <text x="400" y="268" text-anchor="end">मूल्य / AMT</text>
+  </g>
+  
+  <line x1="45" y1="278" x2="405" y2="278" stroke="#334155" stroke-width="1" />
+  
+  <!-- Items -->
+  <g font-family="'Courier New', Courier, monospace" font-size="12" fill="#1e293b">
+    <text x="50" y="305">1. आशीर्वाद आटा (Atta 5kg)</text>
+    <text x="290" y="305" text-anchor="end">1 pkt</text>
+    <text x="400" y="305" text-anchor="end">₹280.00</text>
+    
+    <text x="50" y="340">2. फॉर्च्यून सरसों तेल (Oil 1L)</text>
+    <text x="290" y="340" text-anchor="end">1 btl</text>
+    <text x="400" y="340" text-anchor="end">₹165.00</text>
+    
+    <text x="50" y="375">3. टाटा नमक (Tata Salt 1kg)</text>
+    <text x="290" y="375" text-anchor="end">1 pkt</text>
+    <text x="400" y="375" text-anchor="end">₹28.00</text>
+    
+    <text x="50" y="410">4. इंडिया गेट बासमती चावल (5kg)</text>
+    <text x="290" y="410" text-anchor="end">1 bag</text>
+    <text x="400" y="410" text-anchor="end">₹590.00</text>
+    
+    <text x="50" y="445">5. ताज महल चाय (Tea 500g)</text>
+    <text x="290" y="445" text-anchor="end">1 box</text>
+    <text x="400" y="445" text-anchor="end">₹310.00</text>
+    
+    <text x="50" y="480">6. हल्दी और मसाला (Spices)</text>
+    <text x="290" y="480" text-anchor="end">1 set</text>
+    <text x="400" y="480" text-anchor="end">₹102.00</text>
+  </g>
+  
+  <!-- Divider -->
+  <line x1="45" y1="515" x2="405" y2="515" stroke="#334155" stroke-dasharray="4 3" stroke-width="1.5" />
+  
+  <!-- Calculation -->
+  <g font-family="'Courier New', Courier, monospace" font-size="12" fill="#334155">
+    <text x="50" y="540">उपयोग राशि / Sub Total:</text>
+    <text x="400" y="540" text-anchor="end">₹1,475.00</text>
+    
+    <text x="50" y="565">कर / Tax (GST Included):</text>
+    <text x="400" y="565" text-anchor="end">₹0.00</text>
+  </g>
+  
+  <line x1="45" y1="585" x2="405" y2="585" stroke="#0f172a" stroke-width="2" />
+  
+  <!-- Total -->
+  <g font-family="'Courier New', Courier, monospace" font-size="16" font-weight="bold" fill="#0f172a">
+    <text x="50" y="612">कुल योग / TOTAL AMOUNT:</text>
+    <text x="400" y="612" text-anchor="end" font-size="20">₹1,475.00</text>
+  </g>
+  
+  <line x1="45" y1="630" x2="405" y2="630" stroke="#0f172a" stroke-width="2" />
+  
+  <!-- Barcode & Footer -->
+  <g text-anchor="middle" font-family="'Courier New', Courier, monospace">
+    <!-- Simulated barcode -->
+    <rect x="90" y="650" width="4" height="40" fill="#0f172a" />
+    <rect x="98" y="650" width="8" height="40" fill="#0f172a" />
+    <rect x="110" y="650" width="3" height="40" fill="#0f172a" />
+    <rect x="118" y="650" width="10" height="40" fill="#0f172a" />
+    <rect x="135" y="650" width="5" height="40" fill="#0f172a" />
+    <rect x="145" y="650" width="12" height="40" fill="#0f172a" />
+    <rect x="162" y="650" width="4" height="40" fill="#0f172a" />
+    <rect x="172" y="650" width="7" height="40" fill="#0f172a" />
+    <rect x="185" y="650" width="14" height="40" fill="#0f172a" />
+    <rect x="205" y="650" width="6" height="40" fill="#0f172a" />
+    <rect x="215" y="650" width="8" height="40" fill="#0f172a" />
+    <rect x="230" y="650" width="3" height="40" fill="#0f172a" />
+    <rect x="238" y="650" width="12" height="40" fill="#0f172a" />
+    <rect x="255" y="650" width="5" height="40" fill="#0f172a" />
+    <rect x="265" y="650" width="10" height="40" fill="#0f172a" />
+    <rect x="280" y="650" width="4" height="40" fill="#0f172a" />
+    <rect x="290" y="650" width="8" height="40" fill="#0f172a" />
+    <rect x="305" y="650" width="12" height="40" fill="#0f172a" />
+    <rect x="325" y="650" width="6" height="40" fill="#0f172a" />
+    <rect x="338" y="650" width="10" height="40" fill="#0f172a" />
+    <rect x="352" y="650" width="5" height="40" fill="#0f172a" />
+    
+    <text x="225" y="705" font-size="11" fill="#475569">0948 2901 8841 02</text>
+    <text x="225" y="728" font-size="13" font-weight="bold" fill="#0f172a">धन्यवाद! फिर पधारें (Thank You!)</text>
+  </g>
+</svg>
+"""
+
+madras_cafe_tamil_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 780" width="100%" height="100%">
+  <defs>
+    <filter id="paper-shadow2" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <rect x="25" y="20" width="400" height="740" rx="4" fill="#fffdfa" stroke="#ded8cc" stroke-width="2" filter="url(#paper-shadow2)" />
+  
+  <g text-anchor="middle" font-family="'Courier New', Courier, monospace">
+    <text x="225" y="65" font-size="18" font-weight="bold" fill="#991b1b">ஓம் சரவணபவ</text>
+    <text x="225" y="95" font-size="22" font-weight="900" fill="#1e1b4b">ஸ்ரீ பாலாஜி பவன்</text>
+    <text x="225" y="120" font-size="15" font-weight="bold" fill="#312e81">SRI BALAJI BHAVAN RESTAURANT</text>
+    <text x="225" y="140" font-size="12" fill="#64748b">12, தியாகராயா ரோடு, டி.நகர், சென்னை - 600017</text>
+    <text x="225" y="158" font-size="11" fill="#64748b">FSSAI Lic: 12418001000982 | Phone: 044-24345678</text>
+  </g>
+  
+  <line x1="45" y1="175" x2="405" y2="175" stroke="#94a3b8" stroke-dasharray="4 3" stroke-width="1.5" />
+  
+  <g font-family="'Courier New', Courier, monospace" font-size="12" fill="#334155">
+    <text x="50" y="198">ரசீது எண் / Bill: #SBB-7412</text>
+    <text x="50" y="218">தேதி / Date: 2024-10-15  09:15 AM</text>
+    <text x="50" y="238">மேஜை எண் / Table: T-04 (AC Hall)</text>
+  </g>
+  
+  <line x1="45" y1="252" x2="405" y2="252" stroke="#334155" stroke-width="1.5" />
+  
+  <g font-family="'Courier New', Courier, monospace" font-size="12" font-weight="bold" fill="#0f172a">
+    <text x="50" y="270">பொருள் / ITEM</text>
+    <text x="310" y="270" text-anchor="end">எண்ணிக்கை</text>
+    <text x="400" y="270" text-anchor="end">விலை / RS</text>
+  </g>
+  
+  <line x1="45" y1="280" x2="405" y2="280" stroke="#334155" stroke-width="1" />
+  
+  <g font-family="'Courier New', Courier, monospace" font-size="12" fill="#1e293b">
+    <text x="50" y="310">1. நெய் ரோஸ்ட் தோசை (Ghee Roast)</text>
+    <text x="310" y="310" text-anchor="end">1</text>
+    <text x="400" y="310" text-anchor="end">₹120.00</text>
+    
+    <text x="50" y="348">2. மசால் வடை (Masala Vada 2pc)</text>
+    <text x="310" y="348" text-anchor="end">1</text>
+    <text x="400" y="348" text-anchor="end">₹75.00</text>
+    
+    <text x="50" y="386">3. பில்டர் காபி (Filter Coffee)</text>
+    <text x="310" y="386" text-anchor="end">2</text>
+    <text x="400" y="386" text-anchor="end">₹90.00</text>
+    
+    <text x="50" y="424">4. மினி டிபன் காம்போ (Mini Tiffin)</text>
+    <text x="310" y="424" text-anchor="end">1</text>
+    <text x="400" y="424" text-anchor="end">₹180.00</text>
+    
+    <text x="50" y="462">5. ரவா கேசரி (Rava Kesari)</text>
+    <text x="310" y="462" text-anchor="end">1</text>
+    <text x="400" y="462" text-anchor="end">₹80.00</text>
+  </g>
+  
+  <line x1="45" y1="510" x2="405" y2="510" stroke="#334155" stroke-dasharray="4 3" stroke-width="1.5" />
+  
+  <g font-family="'Courier New', Courier, monospace" font-size="12" fill="#334155">
+    <text x="50" y="535">கூட்டுத்தொகை / Sub Total:</text>
+    <text x="400" y="535" text-anchor="end">₹545.00</text>
+    <text x="50" y="560">வரி / CGST + SGST (Included):</text>
+    <text x="400" y="560" text-anchor="end">₹27.25</text>
+  </g>
+  
+  <line x1="45" y1="585" x2="405" y2="585" stroke="#0f172a" stroke-width="2" />
+  
+  <g font-family="'Courier New', Courier, monospace" font-size="16" font-weight="bold" fill="#0f172a">
+    <text x="50" y="614">மொத்த தொகை / NET TOTAL:</text>
+    <text x="400" y="614" text-anchor="end" font-size="20">₹545.00</text>
+  </g>
+  
+  <line x1="45" y1="635" x2="405" y2="635" stroke="#0f172a" stroke-width="2" />
+  
+  <g text-anchor="middle" font-family="'Courier New', Courier, monospace">
+    <text x="225" y="670" font-size="12" fill="#64748b">Payment Mode: UPI (GPay/PhonePe)</text>
+    <text x="225" y="700" font-size="14" font-weight="bold" fill="#1e1b4b">நன்றி! மீண்டும் வருக!</text>
+    <text x="225" y="720" font-size="12" fill="#64748b">Thank You! Visit Again!</text>
+  </g>
+</svg>
+"""
+
+bangalore_retail_kannada_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 780" width="100%" height="100%">
+  <defs>
+    <filter id="paper-shadow3" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <rect x="25" y="20" width="400" height="740" rx="4" fill="#faf9f6" stroke="#ded8cc" stroke-width="2" filter="url(#paper-shadow3)" />
+  
+  <g text-anchor="middle" font-family="'Courier New', Courier, monospace">
+    <text x="225" y="65" font-size="18" font-weight="bold" fill="#047857">॥ ಶುಭ ಲಾಭ ॥</text>
+    <text x="225" y="95" font-size="22" font-weight="900" fill="#064e3b">ಶಾಂತಿ ಸಾಗರ್ ಸೂಪರ್ ಸ್ಟೋರ್</text>
+    <text x="225" y="120" font-size="15" font-weight="bold" fill="#065f46">SHANTHI SAGAR SUPER STORE</text>
+    <text x="225" y="140" font-size="12" fill="#64748b">4ನೇ ಬ್ಲಾಕ್, ಜಯನಗರ, ಬೆಂಗಳೂರು - 560011</text>
+    <text x="225" y="158" font-size="11" fill="#64748b">GSTIN: 29AABCS9981K1Z2 | ದೂ: 080-26639900</text>
+  </g>
+  
+  <line x1="45" y1="175" x2="405" y2="175" stroke="#94a3b8" stroke-dasharray="4 3" stroke-width="1.5" />
+  
+  <g font-family="'Courier New', Courier, monospace" font-size="12" fill="#334155">
+    <text x="50" y="198">ಬಿಲ್ ಸಂಖ್ಯೆ / Bill: #SSSS-5219</text>
+    <text x="50" y="218">ದಿನಾಂಕ / Date: 2024-10-16  11:30 AM</text>
+    <text x="50" y="238">ಗ್ರಾಹಕ / Customer: Member #4102</text>
+  </g>
+  
+  <line x1="45" y1="252" x2="405" y2="252" stroke="#334155" stroke-width="1.5" />
+  
+  <g font-family="'Courier New', Courier, monospace" font-size="12" font-weight="bold" fill="#0f172a">
+    <text x="50" y="270">ವಿವರಣೆ / ITEM</text>
+    <text x="310" y="270" text-anchor="end">ಪ್ರಮಾಣ</text>
+    <text x="400" y="270" text-anchor="end">ಮೊತ್ತ / AMT</text>
+  </g>
+  
+  <line x1="45" y1="280" x2="405" y2="280" stroke="#334155" stroke-width="1" />
+  
+  <g font-family="'Courier New', Courier, monospace" font-size="12" fill="#1e293b">
+    <text x="50" y="310">1. ಸೋನಾ ಮಸೂರಿ ಅಕ್ಕಿ (Rice 10kg)</text>
+    <text x="310" y="310" text-anchor="end">1 ಬ್ಯಾಗ್</text>
+    <text x="400" y="310" text-anchor="end">₹750.00</text>
+    
+    <text x="50" y="348">2. ತೊಗರಿ ಬೇಳೆ (Toor Dal 2kg)</text>
+    <text x="310" y="348" text-anchor="end">2 kg</text>
+    <text x="400" y="348" text-anchor="end">₹360.00</text>
+    
+    <text x="50" y="386">3. ನಂದಿನಿ ಶುದ್ಧ ತುಪ್ಪ (Ghee 500ml)</text>
+    <text x="310" y="386" text-anchor="end">1 ಬಾಟಲ್</text>
+    <text x="400" y="386" text-anchor="end">₹340.00</text>
+    
+    <text x="50" y="424">4. ಬಾದಾಮಿ ಗೋಡಂಬಿ (Dry Fruits)</text>
+    <text x="310" y="424" text-anchor="end">500 g</text>
+    <text x="400" y="424" text-anchor="end">₹550.00</text>
+    
+    <text x="50" y="462">5. ಏಲಕ್ಕಿ ಮತ್ತು ಲವಂಗ (Spices)</text>
+    <text x="310" y="462" text-anchor="end">100 g</text>
+    <text x="400" y="462" text-anchor="end">₹150.00</text>
+  </g>
+  
+  <line x1="45" y1="510" x2="405" y2="510" stroke="#334155" stroke-dasharray="4 3" stroke-width="1.5" />
+  
+  <g font-family="'Courier New', Courier, monospace" font-size="12" fill="#334155">
+    <text x="50" y="535">ಒಟ್ಟು ಮೊತ್ತ / Sub Total:</text>
+    <text x="400" y="535" text-anchor="end">₹2,150.00</text>
+    <text x="50" y="560">ತೆರಿಗೆ / Taxes (Included):</text>
+    <text x="400" y="560" text-anchor="end">₹0.00</text>
+  </g>
+  
+  <line x1="45" y1="585" x2="405" y2="585" stroke="#0f172a" stroke-width="2" />
+  
+  <g font-family="'Courier New', Courier, monospace" font-size="16" font-weight="bold" fill="#0f172a">
+    <text x="50" y="614">ಅಂತಿಮ ಮೊತ್ತ / TOTAL:</text>
+    <text x="400" y="614" text-anchor="end" font-size="20">₹2,150.00</text>
+  </g>
+  
+  <line x1="45" y1="635" x2="405" y2="635" stroke="#0f172a" stroke-width="2" />
+  
+  <g text-anchor="middle" font-family="'Courier New', Courier, monospace">
+    <text x="225" y="670" font-size="12" fill="#64748b">Savings Today: ₹125.00</text>
+    <text x="225" y="700" font-size="14" font-weight="bold" fill="#064e3b">ಧನ್ಯವಾದಗಳು! ಮತ್ತೆ ಭೇಟಿ ನೀಡಿ!</text>
+    <text x="225" y="720" font-size="12" fill="#64748b">Thank You! Visit Again!</text>
+  </g>
+</svg>
+"""
+
+(RECEIPTS_DIR / "kirana_hindi.svg").write_text(kirana_hindi_svg, encoding="utf-8")
+(RECEIPTS_DIR / "madras_cafe_tamil.svg").write_text(madras_cafe_tamil_svg, encoding="utf-8")
+(RECEIPTS_DIR / "bangalore_retail_kannada.svg").write_text(bangalore_retail_kannada_svg, encoding="utf-8")
+print("Generated regional receipt SVGs successfully!")
